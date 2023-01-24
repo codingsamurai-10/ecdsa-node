@@ -2,7 +2,6 @@ const express = require("express");
 const app = express();
 const cors = require("cors");
 const port = 3042;
-const { recoverPublicKey } = require("ethereum-cryptography/secp256k1");
 const { keccak256 } = require("ethereum-cryptography/keccak");
 const { utf8ToBytes } = require("ethereum-cryptography/utils");
 const secp = require("ethereum-cryptography/secp256k1");
