@@ -1,7 +1,14 @@
 import server from "./server";
 
-function Wallet({ address, setAddress, balance, setBalance }) {
-  async function onChange(evt) {
+function Wallet({
+  address,
+  setAddress,
+  signature,
+  setSignature,
+  balance,
+  setBalance,
+}) {
+  async function onAddressChange(evt) {
     const address = evt.target.value;
     setAddress(address);
     if (address) {
@@ -14,13 +21,31 @@ function Wallet({ address, setAddress, balance, setBalance }) {
     }
   }
 
+  function onSignChange(evt) {
+    const sign = evt.target.value;
+    setSignature(sign);
+  }
+
   return (
     <div className="container wallet">
       <h1>Your Wallet</h1>
 
       <label>
         Wallet Address
-        <input placeholder="Type an address, for example: 0x1" value={address} onChange={onChange}></input>
+        <input
+          placeholder="Type an address, for example: 0x1"
+          value={address}
+          onChange={onAddressChange}
+        ></input>
+      </label>
+
+      <label>
+        Signature
+        <input
+          placeholder="Paste your signature in hex"
+          value={signature}
+          onChange={onSignChange}
+        ></input>
       </label>
 
       <div className="balance">Balance: {balance}</div>
